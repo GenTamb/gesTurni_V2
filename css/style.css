@@ -1,0 +1,72 @@
+@CHARSET "ISO-8859-1";
+
+.pseudoModal{
+	position:absolute;
+	z-index:999;
+	top:40%;
+	left:20%;
+	border : 1px solid black;
+	background: grey;
+}
+.panelDef {
+    border: 5px solid #ccc;
+    border-radius: 10px;
+    float: left;
+    margin: 15px;
+}
+
+.bounce {
+    border: 5px solid #ccc;
+    border-radius: 10px;
+    float: left;
+    margin: 15px;
+    -webkit-transition: margin 0.1s ease-out;
+    -moz-transition: margin 0.1s ease-out;
+    -o-transition: margin 0.1s ease-out;
+}
+
+.bounce:hover {
+    margin-top: 2px;
+}
+
+.btn-circle {
+  margin-top : 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
+}
+
+.btn-add-Mese{
+	width:75px;
+	height: 75px;
+	border-radius: 50%;
+	text-align: center;
+	padding: 3px 0;
+	font-size: 50px;
+	line-height: 1.42;
+}
+td{
+	text-align: center;
+}
+
+.td-max-width{
+	width: 100px;
+}
+
+.th-rootTable{
+	width : 150px;
+}
+
+.festivo{
+	background-color : red;
+}
+
+.spinner-center{
+	position:absolute;
+	left:50%;
+	top:50%;
+}

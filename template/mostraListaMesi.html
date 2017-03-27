@@ -1,0 +1,24 @@
+<div x-ng-controller="recuperaListaMesi" x-ng-init="caricaListaMesi()">
+	<div x-ng-if="mostraSpinner">
+		<img src="template/spinner.gif" height="50px" width="50px">
+	</div>
+	<div x-ng-controller="mostraListaMesi" class="container">
+		<div class="container">
+		 	<div class="row">
+				<div   x-ng-repeat="x in ListaMesi.mesi" class="col-md-4 col-lg-4">	
+					<div class="panel panel-default bounce" style="cursor:pointer; height : 230px" x-ng-controller="recuperaMeseByLista" x-ng-click="cercaMese(x.anno,x.numMese)">
+					  <div class="panel-heading"><h2>{{x.anno}} / {{x.numMese}}</h2></div>
+					  <div class="panel-body">
+					  	<h3>{{x.nomeMese}}</h3>
+					  	<p>Numero Giorni {{x.numGiorniMese}}</p>
+					  	<p>Giorni Utili {{x.numGiorniUtili}}</p>	
+					  </div>
+					  	<div x-ng-if="mostraSpinner">
+							<img src="template/spinner.gif" height="50px" width="50px">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

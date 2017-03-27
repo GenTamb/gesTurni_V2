@@ -1,0 +1,23 @@
+<div class="container-fluid" x-ng-show="mesePresente.ritornaStato()" x-ng-controller="mostraMese">
+  <div id="meseDiv" class="table-responsive">	
+	<table class="table table-bordered table-hover" x-ng-controller="gestisciTabella">
+		<thead>
+			<tr>
+				<th class="th-rootTable">{{Mese.nomeMese}} {{Mese.anno}}</th>
+				<th x-ng-repeat="(key,value) in listaDipendenti.turnisti8">{{recuperaKey(value)}}</th>
+				<th x-ng-repeat="(key,value) in listaDipendenti.turnisti4">{{recuperaKey(value)}}</th>
+				<th x-ng-repeat="(key,value) in listaDipendenti.turnisti6">{{recuperaKey(value)}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr x-ng-repeat="x in Mese.calendarioGiorni">
+				<td x-ng-class="{'festivo' : x.nomeGiorno=='Sab' || x.nomeGiorno=='Dom' || x.festivo==1}">{{x.numeroGiorno}} {{x.nomeGiorno}}</td>
+				<td x-ng-model="nomeTurno" x-ng-repeat="y in x.turniGiornalieri8">{{decodificaNomeTurno(recuperaValue(y))}}</td>
+				<td x-ng-model="nomeTurno" x-ng-repeat="y in x.turniGiornalieri4">{{decodificaNomeTurno(recuperaValue(y))}}</td>
+				<td x-ng-model="nomeTurno" x-ng-repeat="y in x.turniGiornalieri6">{{decodificaNomeTurno(recuperaValue(y))}}</td>
+			</tr>
+		</tbody>
+	</table>
+  </div>
+  <button class="btn btn-md btn-info" x-ng-click="print('meseDiv')">Stampa</button>	
+</div>

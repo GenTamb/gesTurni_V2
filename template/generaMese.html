@@ -1,0 +1,67 @@
+<div x-ng-controller="generaMese">
+  <div>
+  	<button class="btn btn-lg btn-success btn-circle" x-ng-click="mostraPanelBTN()">Genera</button>	
+  </div>
+	<div class="panel panel-default pseudoModal" x-ng-if="mostraPanel">
+		<div class="panel-heading">
+			<h2>Genera Mese</h2>
+		</div>
+		<div class="panel-body">
+			<form id="aggiungiMese">
+				<div class="form-group">
+					<label for="anno">Anno</label>
+					<input id="anno" type="number" x-ng-model="mese.anno" ng-disabled="mostraSpinner"></input>
+					<label for="mese">Mese</label>
+					<select id="mese" x-ng-model="mese.nomeMese" ng-disabled="mostraSpinner">
+					  <option x-ng-repeat="x in ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre']" value="{{x}}">{{x}}</option>
+					</select><br>
+					<label for="numGiorni">Numero Giorni</label>
+					<select id="numGiorni" x-ng-model="mese.numGiorni" ng-disabled="mostraSpinner">
+					  <option x-ng-repeat="x in [28,29,30,31]" value="{{x}}">{{x}}</option>
+					</select><br>
+					<label for="primoGiorno">Primo Giorno</label>
+					<select id="primoGiorno" x-ng-model="mese.primoGiorno" ng-disabled="mostraSpinner">
+					  <option x-ng-repeat="y in ['Lun','Mar','Mer','Gio','Ven','Sab','Dom']" value="{{y}}">{{y}}</option>
+					</select>
+					<label for="forzaRig">Forza Rigenerazione Turni</label>
+					<input ng-disabled="mostraSpinner" id="forzaRig" type="checkbox" x-ng-model="mese.rigenerazione"></input>
+					<p>Festivi</p>
+					<div class="row">
+						<div class="col-lg-1 col-md-1 col-xs-1" x-ng-model="festivi"  x-ng-repeat="x in [1,2,3,4,5,6,7]">
+							<input ng-disabled="mostraSpinner" x-ng-change="mese.pushFestivo({{x}})" type="checkbox"  value="{{x}}" x-ng-model="entity.isChecked"></input>
+							{{x}}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-1 col-md-1 col-xs-1" x-ng-model="festivi"  x-ng-repeat="x in [8,9,10,11,12,13,14]">
+							<input ng-disabled="mostraSpinner" x-ng-change="mese.pushFestivo({{x}})" type="checkbox"  value="{{x}}" x-ng-model="entity.isChecked"></input>
+							{{x}}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-1 col-md-1 col-xs-1" x-ng-model="festivi"  x-ng-repeat="x in [15,16,17,18,19,20,21]">
+							<input ng-disabled="mostraSpinner" x-ng-change="mese.pushFestivo({{x}})" type="checkbox"  value="{{x}}" x-ng-model="entity.isChecked"></input>
+							{{x}}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-1 col-md-1 col-xs-1" x-ng-model="festivi"  x-ng-repeat="x in [21,22,23,24,25,26,27]">
+							<input ng-disabled="mostraSpinner" x-ng-change="mese.pushFestivo({{x}})" type="checkbox"  value="{{x}}" x-ng-model="entity.isChecked"></input>
+							{{x}}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-1 col-md-1 col-xs-1" x-ng-model="festivi"  x-ng-repeat="x in [28,29,30,31]">
+							<input ng-disabled="mostraSpinner" x-ng-change="mese.pushFestivo({{x}})" type="checkbox"  value="{{x}}" x-ng-model="entity.isChecked"></input>
+							{{x}}
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="panel-footer">
+			<button class="btn btn-lg btn-info" x-ng-click="mese.inviaRichiesta()">Genera</button>
+			<img src="template/spinner.gif" height="50px" width="50px" x-ng-if="mostraSpinner">
+		</div>
+	</div>
+</div>

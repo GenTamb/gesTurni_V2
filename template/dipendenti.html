@@ -1,0 +1,74 @@
+<div class="container-fluid" x-ng-controller="gestisciDipendenti">
+<div class="spinner-center" x-ng-show="mostraSpinner"><img src="template/spinner.gif" height="50px" width="50px"></div>
+  <div class="table-responsive">	
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th class="td-max-width">DIPENDENTE</th>
+				<th class="td-max-width">ORARIO</th>
+				<th class="td-max-width">RESPONSABILE</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr x-ng-repeat="x in listaDipendenti.lista.listaDipendenti">
+				<td class="cogNome">{{x.cognome}},{{x.nome}}</td>
+				<td>{{x.orario}} ore</td>
+				<td>{{x.speciale}}</td>
+				<td x-ng-if="editOn">
+					<button class="btn btn-xs btn-info" x-ng-click="edit_Dip.showEditForm(x.cognome,x.nome,x.orario,x.speciale)">Edit</button>
+					<button class="btn btn-xs btn-danger" x-ng-click="add_Dip.del($event)">Del</button>
+				</td>
+			</tr>
+			<tr x-ng-show="mostraAddRow">
+				<td><input type="text" x-ng-model="add_Dip.cognome_nome"></input></td>
+				<td>
+					<select x-ng-model="add_Dip.orario">      
+						<option x-ng-repeat="x in listaDipendenti.listaOrari" value="{{x}}">{{x}} ore</option>
+					</select>
+				</td>
+				<td>
+					<select x-ng-model="add_Dip.responsabile">
+						<option x-ng-repeat="x in listaDipendenti.resp" value="{{x}}">{{x}}</option>      
+					</select>
+				</td>
+				<td class="td-max-width">
+					<button class="btn btn-xs btn-info" x-ng-click="add_Dip.add()">ADD</button>
+					<button class="btn btn-xs btn-danger" x-ng-click="nascondiAddRowFN()">X</button>
+				</td>
+			</tr> 
+		</tbody>
+	</table>
+	<button class="btn btn-md btn-danger" x-ng-show="mostraAddBtn" x-ng-click="mostraAddRowFN()">Aggiungi</button>
+	<button class="btn btn-md btn-danger" x-ng-show="mostraEditBtn" x-ng-click="mostraEditFN()">Edit</button>
+	<button class="btn btn-md btn-danger" x-ng-show="editOn" x-ng-click="nascondiEditFN()">X</button>
+  </div>
+  <div x-ng-if="editFormOn" class="pseudoModal">
+  		<table class="table">
+		<thead>
+			<tr>
+				<th class="td-max-width" x-ng-model="edit_Dip.origCognome">{{edit_Dip.origCognome}}</th>
+				<th class="td-max-width" x-ng-model="edit_Dip.origNome">{{edit_Dip.origNome}}</th>
+				<th class="td-max-width" x-ng-model="edit_Dip.origOrario">{{edit_Dip.origOrario}}</th>
+				<th class="td-max-width" x-ng-model="edit_Dip.origResponsabile">{{edit_Dip.origResponsabile}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="text" x-ng-model="edit_Dip.cognome" ></td>
+				<td><input type="text" x-ng-model="edit_Dip.nome" ></td>
+				<td><select x-ng-model="edit_Dip.orario" >      
+						<option  x-ng-repeat="x in listaDipendenti.listaOrari" value="{{x}}">{{x}} ore</option>
+					</select>
+				</td>
+				
+				<td><select x-ng-model="edit_Dip.responsabile">
+					<option  x-ng-repeat="x in listaDipendenti.resp" value="{{x}}">{{x}}</option>      
+					</select>
+				</td>
+				<td><button class="btn btn-md btn-success" x-ng-click="edit_Dip.inoltraEdit()">Edit</button></td>
+				<td><button class="btn btn-md btn-danger" x-ng-click="edit_Dip.chiudiEdit()">X</button></td>
+			</tr>
+		</tbody>
+	</table>
+  </div>	
+</div>

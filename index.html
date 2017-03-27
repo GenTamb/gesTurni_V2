@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>gesTurni_V2</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="Bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="Angular/angular.min.js"></script>
+  <script src="Angular/angular-route.min.js"></script>
+<!--   <script src="Bootstrap/bootstrap.min.js"></script> -->
+  <script src="script/modules/gesTurniFE_Module.js"></script>
+  <script src="script/controllers/gesTurniFE_Controller.js"></script>	
+  <script src="script/directives/gesTurniFE_Directive.js"></script>
+  
+</head>
+<body x-ng-app="gesTurniFE" >
+<div class="container">
+	<div class="row">
+		<div class="col-lg-2">
+			<div class="row"><h2>GESTURNIV2</h2><p>by GT</p></div>
+			<left-bar></left-bar>
+		</div>
+		<div class="col-lg-10" x-ng-view>
+		</div>
+</div>
+
+</body>
+</html>
